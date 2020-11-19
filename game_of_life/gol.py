@@ -11,8 +11,13 @@ def evolve(alive_neighbours=0, cell_is_alive=False):
 def count_neighbours(board, position):
     """ counts the number of neighbours at given position in board"""
     row_number, column_number = position
-    upper_row_idx = row_number-1+len(board) % len(board)  # upper wrap around
-    lower_row_idx = row_number+1 % len(board)  # lower wrap around
+    # calulate the index of the row above position 
+    # and check wrap around if row_number is 0
+    upper_row_idx = row_number-1+len(board) % len(board)
+
+    # calulate the index of the row below position 
+    # and check wrap around if row_number is the last row in board
+    lower_row_idx = row_number+1 % len(board)
     rows = (board[upper_row_idx], board[row_number], board[lower_row_idx])
 
     count = 0
